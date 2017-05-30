@@ -1,0 +1,39 @@
+
+<head>
+
+
+
+<style>
+canvas {
+    background-color: gray;
+}
+</style>
+
+
+</head>
+<body>
+
+<img id="xizang" src="xizang.jpg"
+    border="1" height="200" width="300">
+
+<canvas id="myCanvas"  width="300" height="200">
+    Please upgrade your browser
+</canvas>
+<script>
+    function drawImage(myImage)
+    {
+        var Image = new Image();
+    }   // end function
+
+    var canvas = document.getElementById("myCanvas");
+    var context = canvas.getContext('2d');
+    var source = document.getElementById("xizang");
+
+    var imgWidth = source.offsetWidth;
+    var imgHeight = source.offsetHeight;
+    canvas.width = imgWidth;
+    canvas.heigth = imgHeight;
+    context.drawImage(source, 0, 0);
+</script>
+
+</body>

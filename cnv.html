@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<htnl> 
+<head>
+    
+<link rel="stylesheet" type="text/css" href="cnv.css">
+
+<title>Canvas</title>
+</head>
+
+<body onload="draw();">
+
+<canvas id="myCanvas" width="300" height="200" oncontextmenu="return false">Please use a browser that supports html5</canvas>
+<p>Result Canvas</p>
+
+<canvas id="backCanvas" width="300" height="200">Please use a browser that supports html5</canvas>
+<p>Work Canvas</p>
+
+<div>
+    <img id="xizang" src="xizang.jpg" 
+    border="3" height="200" width="300">
+
+    <img id="cama" src="cama.jpg" 
+    border="3" height="200" width="300">
+</div>
+
+<div>  
+    <button id="btnT">
+    Load Top Image
+    </button>
+
+    <button id="btnB">
+    Load Bottom Image
+    </button>
+</div>
+
+<script type="text/javascript" src="cnv.js"></script>
+
+</body>
+</htnl>

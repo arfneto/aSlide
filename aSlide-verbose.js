@@ -40,13 +40,20 @@ function aSlide(
 		);
 		return;
 	}
+
+	console.log("source image ok " + sourceImage1);
+	console.log("aSlide()");;
+	console.log("img 1" + sourceImage1 + "size: (" + sourceImage1.width + "," + sourceImage1.height + "]");
+	console.log("img 2" + sourceImage2 + "size: (" + sourceImage2.width + "," + sourceImage2.height + "]");
+	console.log("screen canvas "        + "size: (" + canvas.width + "," + canvas.height + "]");
+
 	var _Width = canvas.width;
 	var _Height = canvas.height;
 	var _wheelStep = Math.floor(_Width * 0.02); // pixels
 
-	console.log("slide(2017 arfneto@y7mail.com) image size [" +
-		 _Width + "x" + _Height + "] wheel step = " + _wheelStep +
-		" Wheel Up goes " + _WheelUp +
+	console.log("working image size [" +
+		 _Width + "x" + _Height + "] step = " + _wheelStep +
+		" Whell Up goes " + _WheelUp +
 		" Divide Screen with mouse button " + _DivideNow 
 	);
 
@@ -64,6 +71,9 @@ function aSlide(
 	iBottomCanvas.setAttribute('height', _Height);
 	var workBottom = iBottomCanvas.getContext('2d');
 	workBottom.drawImage(sourceImage2,0, 0, _Width, _Height);
+
+	console.log("top internal canvas "           + "size: (" + iTopCanvas.width + "," + iTopCanvas.height + "]");
+	console.log("bottom internal canvas "        + "size: (" + iBottomCanvas.width + "," + iBottomCanvas.height + "]");
 
 	// draw top image on screen
 	out.drawImage(iTopCanvas,0, 0, _Width, _Height);
@@ -89,6 +99,7 @@ function aSlide(
 		function(e)
 		{
 			startX = e.clientX;
+			console.log("mouse down");
 		}
 	);
 
@@ -111,6 +122,8 @@ function aSlide(
 		"mouseup",
 		function(e)
 		{
+			console.log("mouse up");
+			//console.log(e);
 			endX = e.clientX;
 			if(e.type === "wheel"){ return };
 			(e.button === _DivideNow) ? nowDivide(endX) : slideOver(endX - startX);
@@ -132,6 +145,7 @@ function aSlide(
 		// drawImage(image, dx, dy, dw, dh)
 		// drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
 		//
+		console.log("slide over: delta " + delta + " divider at " + dvdr );
 		delta += dvdr;
 		if(delta<=0)
 		{
@@ -155,7 +169,12 @@ function aSlide(
 
 	function nowDivide(delta)
 	{
-		if((delta<1) || (delta>_Width))	{ return; }
+		if((delta<1) || (delta>_Width))
+		{
+			console.log("out of limits (" + 1 + "..." + _Width + "). Delta=[" + delta + "] returning");
+			return;
+		}
+		console.log("divide at " + delta);
 		out.drawImage(iBottomCanvas,0, 0, _Width, _Height); // reset bg
 		out.save();
 		out.translate(delta,0);

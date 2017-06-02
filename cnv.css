@@ -1,7 +1,29 @@
+body {
+	font-family: "Arial";
+}
+
 canvas {
+	margin: 100 30 30 30;
 	background-color: gray;
 }
 
 img {
 	display: none;
+}
+
+#btnT, #btnB {
+	display: none;
+}
+
+h3 {
+	font-size: 24;
+}
+
+p {
+	font-size: 20;
+}
+
+code {
+	font-family: "Courier";
+	font-weight: 700;
 }

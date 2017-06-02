@@ -1,3 +1,4 @@
+(
 var tButton = document.getElementById("btnT");
 var bButton = document.getElementById("btnB");
 
@@ -16,3 +17,4 @@ bButton.addEventListener(
 		console.log("BOTTOM click BOTTOM");
 	}
 );
+
